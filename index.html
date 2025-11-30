@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Weather Dashboard</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Google Font Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-100 to-blue-200 text-gray-900 transition-all" id="page-body">
+
+  <div class="max-w-6xl mx-auto p-6 space-y-6">
+
+    <!-- HEADER -->
+    <header class="glass p-5 rounded-3xl flex justify-between items-center fade">
+      <h1 class="text-3xl font-extrabold">Weather Dashboard</h1>
+
+      <div class="flex items-center gap-3">
+        <button id="themeToggle" class="icon-btn glass">🌗</button>
+        <button id="unitToggle" class="icon-btn glass">°C</button>
+        <button id="refreshBtn" class="icon-btn glass">🔄</button>
+      </div>
+    </header>
+
+    <!-- SEARCH -->
+    <div class="glass p-6 rounded-3xl fade">
+      <label class="font-semibold text-lg">Search City</label>
+
+      <input id="searchInput"
+             class="search-input"
+             placeholder="Type city name..." />
+
+      <div id="suggestions" class="mt-3"></div>
+
+      <div class="flex justify-between mt-4 text-sm text-gray-700">
+        <span id="statusText">Idle</span>
+        <span id="lastUpdated">Last update: —</span>
+      </div>
+    </div>
+
+    <!-- CURRENT WEATHER -->
+    <div class="glass p-8 rounded-3xl fade" id="current-weather">
+      
+      <div class="flex justify-between items-center">
+        <div>
+          <h2 id="location" class="text-4xl font-extrabold">—</h2>
+          <p id="localTime" class="text-sm opacity-70 mt-1">—</p>
+        </div>
+
+        <div id="weatherIcon" class="w-28 h-28"></div>
+      </div>
+
+      <div class="mt-4">
+        <p id="condition" class="text-2xl font-semibold">—</p>
+        <p id="temp" class="text-7xl font-extrabold mt-4">—</p>
+      </div>
+
+      <!-- TODAY HIGHLIGHTS -->
+      <h3 class="text-xl font-bold mt-8">Today's Highlights</h3>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+
+        <div class="mini-card">
+          <p class="label">Humidity</p>
+          <p id="humidity" class="value">—</p>
+        </div>
+
+        <div class="mini-card">
+          <p class="label">Wind</p>
+          <p id="wind" class="value">—</p>
+        </div>
+
+        <div class="mini-card">
+          <p class="label">Pressure</p>
+          <p id="pressure" class="value">—</p>
+        </div>
+
+        <div class="mini-card">
+          <p class="label">Visibility</p>
+          <p id="visibility" class="value">—</p>
+        </div>
+
+        <div class="mini-card">
+          <p class="label">Cloudiness</p>
+          <p id="clouds" class="value">—</p>
+        </div>
+
+        <div class="mini-card">
+          <p class="label">Dew Point</p>
+          <p id="dew" class="value">—</p>
+        </div>
+
+        <div class="mini-card col-span-2">
+          <p class="label">Sunrise / Sunset</p>
+          <p id="sun" class="value text-lg">—</p>
+        </div>
+
+      </div>
+
+      <!-- FAVORITES -->
+      <div class="flex gap-3 mt-6">
+        <button id="saveFavBtn" class="glass p-2 rounded-xl">⭐ Save</button>
+        <button id="clearFavsBtn" class="glass p-2 rounded-xl">🗑 Clear</button>
+      </div>
+
+      <div id="favoritesList" class="flex flex-wrap gap-2 mt-4"></div>
+
+    </div>
+
+    <!-- FORECAST -->
+    <section class="glass p-6 rounded-3xl fade">
+      <h3 class="text-2xl font-semibold mb-4">5-Day Forecast</h3>
+      <div id="forecastList" class="space-y-4"></div>
+    </section>
+
+    <!-- CHART -->
+    <section class="glass p-6 rounded-3xl fade">
+      <h3 class="text-2xl font-semibold mb-4">Temperature Trend</h3>
+      <canvas id="tempChart" height="100"></canvas>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

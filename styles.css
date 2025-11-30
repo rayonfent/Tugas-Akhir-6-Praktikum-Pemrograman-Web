@@ -1,0 +1,184 @@
+/* ==========================
+   styles.css — Premium Glass UI
+   Palette: luxury bright blue
+   ========================== */
+
+/* Root color tokens (easy tuning) */
+:root{
+  --bg-from: #e8f0ff;    /* lighter */
+  --bg-to:   #cfe0ff;    /* light */
+  --accent:  #2563eb;    /* primary blue */
+  --accent-2:#3b82f6;
+  --card-bg: rgba(255,255,255,0.42);
+  --card-border: rgba(255,255,255,0.32);
+  --glass-shadow: 0 8px 30px rgba(9,30,66,0.08);
+  --text: #0f172a;
+  --muted: #475569;
+}
+
+/* Page background override (works with Tailwind gradient) */
+#page-body{
+  background-image: linear-gradient(135deg, var(--bg-from) 0%, var(--bg-to) 100%);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* -------- Glass (Light) -------- */
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.36) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--glass-shadow);
+  transition: background .28s ease, border .28s ease, box-shadow .28s ease, transform .12s ease;
+}
+
+/* -------- Glass Dark -------- */
+.glass-dark {
+  background: linear-gradient(180deg, rgba(10,14,24,0.64) 0%, rgba(10,14,24,0.44) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 40px rgba(2,6,23,0.6);
+}
+
+/* Card micro style for highlight tiles */
+.mini-card {
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.28));
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: 0 6px 18px rgba(9,30,66,0.06);
+  transition: transform .14s ease, box-shadow .14s ease;
+}
+.mini-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(9,30,66,0.08); }
+
+.mini-card .label { font-size: .85rem; color: var(--muted); margin-bottom:.35rem; }
+.mini-card .value { font-weight:700; font-size:1.25rem; color:var(--text); }
+
+/* Search input styling */
+.search-input {
+  width: 100%;
+  padding: .85rem 1rem;
+  margin-top: .6rem;
+  border-radius: 14px;
+  border: 1px solid rgba(15,23,42,0.06);
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 6px 20px rgba(9,30,66,0.04);
+  outline: none;
+  font-size: 1rem;
+  color: var(--text);
+  transition: box-shadow .18s, transform .12s;
+}
+.search-input:focus {
+  box-shadow: 0 10px 30px rgba(59,130,246,0.12);
+  transform: translateY(-2px);
+}
+
+/* Suggestions dropdown */
+#suggestions {
+  margin-top: .6rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+#suggestions > div {
+  padding: .8rem 1rem;
+  cursor: pointer;
+  transition: background .12s;
+  background: rgba(255,255,255,0.42);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+#suggestions > div:hover { background: rgba(255,255,255,0.7); }
+
+/* Forecast cards */
+#forecastList .glass {
+  display: block;
+  padding: .9rem 1rem;
+}
+#forecastList .glass img { display:inline-block; vertical-align:middle; margin: 0 0.6rem; }
+
+/* Forecast expanded panel */
+#forecastList [id="expand"] {
+  margin-top: .6rem;
+  padding-top: .6rem;
+}
+
+/* Favorites chips inside current card */
+#favoritesList { margin-top: .6rem; }
+#favoritesList button {
+  background: linear-gradient(180deg, rgba(255,255,255,0.68), rgba(255,255,255,0.48));
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: .45rem .7rem;
+  border-radius: 999px;
+  font-size: .9rem;
+  box-shadow: 0 6px 18px rgba(9,30,66,0.04);
+}
+#favoritesList button:hover { transform: translateY(-3px); }
+
+/* Header icon buttons */
+.icon-btn {
+  padding: .5rem .8rem;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: linear-gradient(180deg, rgba(255,255,255,0.56), rgba(255,255,255,0.3));
+  box-shadow: 0 6px 20px rgba(9,30,66,0.04);
+  transition: transform .12s ease, box-shadow .12s;
+  font-weight:600;
+}
+.icon-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(9,30,66,0.06); }
+
+/* Glass control for small elements */
+.glass.p-2 { padding:.5rem; }
+
+/* Temp big */
+#temp { letter-spacing: -0.02em; }
+
+/* Chart canvas style */
+canvas#tempChart { width:100% !important; height: 120px !important; }
+
+/* Fade animation */
+.fade { animation: fadeIn .3s ease both; }
+@keyframes fadeIn { from { opacity:0; transform: translateY(8px);} to {opacity:1; transform:none;} }
+
+/* Responsive tweaks */
+@media (max-width: 768px){
+  .text-4xl { font-size: 1.5rem; }
+  #temp { font-size: 3.2rem; }
+  .glass { padding: 1rem; }
+}
+
+/* Dark mode overrides (applied by JS toggling .dark-mode on body) */
+body.dark-mode {
+  --bg-from: #0b1220;
+  --bg-to: #0f1724;
+  --accent: #60a5fa;
+  --card-bg: rgba(8,10,15,0.58);
+  --card-border: rgba(255,255,255,0.05);
+  --text: #e6eefc;
+  --muted: #9aa7c7;
+}
+
+body.dark-mode #page-body {
+  background-image: linear-gradient(135deg, var(--bg-from) 0%, var(--bg-to) 100%);
+  color: var(--text);
+}
+
+/* Ensure .glass-dark appearance (used by JS to swap) */
+.glass-dark {
+  background: linear-gradient(180deg, rgba(8,10,15,0.56), rgba(8,10,15,0.38));
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 12px 40px rgba(2,6,23,0.55);
+}
+
+/* Small helpers */
+.hidden { display:none !important; }
+.text-muted { color: var(--muted); }
+.value { font-weight: 700; font-size: 1.15rem; }
+
+/* Accessibility focus */
+.search-input:focus, .icon-btn:focus, #suggestions > div:focus { outline: 2px solid rgba(37,99,235,0.18); outline-offset: 2px; }
+
+/* End of styles.css */
