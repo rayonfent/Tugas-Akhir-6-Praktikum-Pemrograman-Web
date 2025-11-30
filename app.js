@@ -1,8 +1,8 @@
 /* ============================================================
-   Premium Weather Dashboard — app.js
+  Weather Dashboard — app.js
    ============================================================ */
 
-/* 🔧 MASUKKAN API KEY DI SINI */
+/* API KEY */
 const GEO_API_KEY = "d5dd8269cbmsh678f3c512b5538fp1bc8cfjsn69c663677ca7";
 const WEATHER_API_KEY = "aa05b5deb25fc388cd03322d3a12befe";
 
@@ -379,4 +379,5 @@ document.getElementById("refreshBtn").onclick = () => {
 ============================================================ */
 setInterval(() => {
   if (currentCity) fetchWeather();
+
 }, 300000); // 5 minutes
