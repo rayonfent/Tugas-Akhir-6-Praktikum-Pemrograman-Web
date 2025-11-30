@@ -1,9 +1,9 @@
 /* ==========================
-   styles.css — Premium Glass UI
-   Palette: luxury bright blue
+   styles.css - Glass UI
+   Palette: bright blue
    ========================== */
 
-/* Root color tokens (easy tuning) */
+/* Root color tokens */
 :root{
   --bg-from: #e8f0ff;    /* lighter */
   --bg-to:   #cfe0ff;    /* light */
@@ -16,7 +16,6 @@
   --muted: #475569;
 }
 
-/* Page background override (works with Tailwind gradient) */
 #page-body{
   background-image: linear-gradient(135deg, var(--bg-from) 0%, var(--bg-to) 100%);
   color: var(--text);
@@ -130,27 +129,23 @@
 }
 .icon-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(9,30,66,0.06); }
 
-/* Glass control for small elements */
 .glass.p-2 { padding:.5rem; }
 
 /* Temp big */
 #temp { letter-spacing: -0.02em; }
 
-/* Chart canvas style */
 canvas#tempChart { width:100% !important; height: 120px !important; }
 
 /* Fade animation */
 .fade { animation: fadeIn .3s ease both; }
 @keyframes fadeIn { from { opacity:0; transform: translateY(8px);} to {opacity:1; transform:none;} }
 
-/* Responsive tweaks */
 @media (max-width: 768px){
   .text-4xl { font-size: 1.5rem; }
   #temp { font-size: 3.2rem; }
   .glass { padding: 1rem; }
 }
 
-/* Dark mode overrides (applied by JS toggling .dark-mode on body) */
 body.dark-mode {
   --bg-from: #0b1220;
   --bg-to: #0f1724;
@@ -166,19 +161,14 @@ body.dark-mode #page-body {
   color: var(--text);
 }
 
-/* Ensure .glass-dark appearance (used by JS to swap) */
 .glass-dark {
   background: linear-gradient(180deg, rgba(8,10,15,0.56), rgba(8,10,15,0.38));
   border: 1px solid rgba(255,255,255,0.06);
   box-shadow: 0 12px 40px rgba(2,6,23,0.55);
 }
 
-/* Small helpers */
 .hidden { display:none !important; }
 .text-muted { color: var(--muted); }
 .value { font-weight: 700; font-size: 1.15rem; }
 
-/* Accessibility focus */
 .search-input:focus, .icon-btn:focus, #suggestions > div:focus { outline: 2px solid rgba(37,99,235,0.18); outline-offset: 2px; }
-
-/* End of styles.css */
